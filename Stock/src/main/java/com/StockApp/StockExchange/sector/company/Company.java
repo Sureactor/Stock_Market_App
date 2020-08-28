@@ -7,9 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.StockApp.StockExchange.sector.company.ipo.CompanyIPO;
 import com.StockApp.StockExchange.sector.company.stock.Stock;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","stock"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","stock","companyIPO"})
 @Entity
 public class Company {
 	@Id
@@ -24,6 +25,8 @@ public class Company {
 	
 	@OneToMany(mappedBy="company")
 	Set<Stock> stock;
+	@OneToMany(mappedBy="company")
+	Set<CompanyIPO> companyIPO;
 	public Company() {}
 	
 	

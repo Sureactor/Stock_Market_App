@@ -18,4 +18,11 @@ public class StockService {
 	public void stockAdder(Stock stock) {
 		repo.save(stock);
 	}
+	
+	public List<List<String>> companyDetailsGetter(Integer companyId,String date1, String date2){
+		List<Stock> stock = repo.findByCompanyCompanyId(companyId);
+		
+		return null;
+		
+	}
 }

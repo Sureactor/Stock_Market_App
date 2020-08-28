@@ -1,6 +1,10 @@
 package com.StockApp.StockExchange.sector.company;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +17,12 @@ public class CompanyController {
 	@PostMapping("/admin/company/add")
 	public void addCompany(@RequestBody Company company) {
 		service.companyAdder(company);
+	}
+	
+	
+	@GetMapping("/user/company/get/{companyId}") 
+	public Company getCompanyById(@PathVariable Integer companyId){
+		return service.CompanyByIdGetter(companyId);
 	}
 	
 }

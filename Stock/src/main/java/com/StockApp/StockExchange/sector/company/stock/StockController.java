@@ -25,4 +25,9 @@ public class StockController {
 	public void addStock(@RequestBody Stock stock) {
 		service.stockAdder(stock);
 	}
+	
+	@PostMapping("/user/company/stock/{companyId}/{date1}/{date2}")
+	public List<List<String>> compareStock(@PathVariable Integer companyId,@PathVariable String date1,@PathVariable String date2){
+		return null;
+	}
 }
