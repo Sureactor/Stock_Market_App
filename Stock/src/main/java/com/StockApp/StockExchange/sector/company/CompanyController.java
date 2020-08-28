@@ -10,7 +10,7 @@ public class CompanyController {
 	@Autowired
 	CompanyService service = new CompanyService();
 	
-	@PostMapping("/admin/StockExhchange/company/add")
+	@PostMapping("/admin/company/add")
 	public void addCompany(@RequestBody Company company) {
 		service.companyAdder(company);
 	}

@@ -3,14 +3,16 @@ package com.StockApp.StockExchange.sector.company;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.StockApp.StockExchange.sector.company.stock.Stock;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","stock"})
 @Entity
 public class Company {
-	@javax.persistence.Id
+	@Id
 	Integer companyId;
 	String ceo;
 	String brief;
@@ -25,18 +27,18 @@ public class Company {
 	public Company() {}
 	
 	
-	public Company(Integer id, String ceo, String brief, String code, String name, String contactId, String sectorId,
-			String stockExchangeId,Stock stock) {
-		super();
-		this.companyId = id;
-		this.ceo = ceo;
-		this.brief = brief;
-		this.code = code;
-		this.name = name;
-		this.contactId = contactId;
-		this.sectorId = sectorId;
-		this.stockExchangeId = stockExchangeId;
-	}
+//	public Company(Integer id, String ceo, String brief, String code, String name, String contactId, String sectorId,
+//			String stockExchangeId,Stock stock) {
+//		super();
+//		this.companyId = id;
+//		this.ceo = ceo;
+//		this.brief = brief;
+//		this.code = code;
+//		this.name = name;
+//		this.contactId = contactId;
+//		this.sectorId = sectorId;
+//		this.stockExchangeId = stockExchangeId;
+//	}
 	public Integer getCompanyId() {
 		return companyId;
 	}

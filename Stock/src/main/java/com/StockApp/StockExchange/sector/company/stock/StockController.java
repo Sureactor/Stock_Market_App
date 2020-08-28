@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class StockController {
 	@Autowired
 	StockService service = new StockService();
-	@RequestMapping("/user/company/{id}")
-	public List<Stock> getStockByCompanyId(@PathVariable Integer id){
-//		List<Stock> list = service.StockGetterByCompanyId(id);
-		return null;
+	@RequestMapping("/user/company/{companyId}")
+	public List<Stock> getStockByCompanyId(@PathVariable Integer companyId){
+		List<Stock> list = service.StockGetterByCompanyId(companyId);
+		return list;
 		
 	}
 	

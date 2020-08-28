@@ -10,7 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.StockApp.StockExchange.sector.company.Company;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","company"})
 @Entity
 public class Stock {
 	@Id
@@ -20,34 +22,36 @@ public class Stock {
 	Date date;
 	LocalDateTime dateTime;
 	double openPrice;
-	String companyId;
 	String stockExchangeId;
 	
+	
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn(name="companyId")
 	Company company;
 	
-	public Stock() {
-		
-	}
-	public Stock(Integer stockId, double closePrice, double companyTurnover, Date date, LocalDateTime dateTime,
-			double openPrice, String companyId, String stockExchangeId,Company company) {
-		super();
-		this.stockId = stockId;
-		this.closePrice = closePrice;
-		this.companyTurnover = companyTurnover;
-		this.date = date;
-		this.dateTime = dateTime;
-		this.openPrice = openPrice;
-		this.companyId = companyId;
-		this.stockExchangeId = stockExchangeId;
-		}
 	public Company getCompany() {
 		return company;
 	}
+
 	public void setCompany(Company company) {
 		this.company = company;
 	}
+	public Stock() {
+		
+	}
+//	public Stock(Integer stockId, double closePrice, double companyTurnover, Date date, LocalDateTime dateTime,
+//			double openPrice, String companyId, String stockExchangeId,Company company) {
+//		super();
+//		this.stockId = stockId;
+//		this.closePrice = closePrice;
+//		this.companyTurnover = companyTurnover;
+//		this.date = date;
+//		this.dateTime = dateTime;
+//		this.openPrice = openPrice;
+//		this.companyId = companyId;
+//		this.stockExchangeId = stockExchangeId;
+//		}
+	
 	public Integer getStockId() {
 		return stockId;
 	}
@@ -83,12 +87,6 @@ public class Stock {
 	}
 	public void setOpenPrice(double openPrice) {
 		this.openPrice = openPrice;
-	}
-	public String getCompanyId() {
-		return companyId;
-	}
-	public void setCompanyId(String companyId) {
-		this.companyId = companyId;
 	}
 	public String getStockExchangeId() {
 		return stockExchangeId;

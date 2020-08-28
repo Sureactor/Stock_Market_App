@@ -10,10 +10,9 @@ import org.springframework.stereotype.Service;
 public class StockService {
 	@Autowired
 	StockRepository repo;
-	public List<Stock> StockGetterByCompanyId(Integer id){
+	public List<Stock> StockGetterByCompanyId(Integer companyId){
 		List<Stock> list = new ArrayList<>();
-//		return repo.findByCompanyId(id);
-		return null;
+		return repo.findByCompanyCompanyId(companyId);
 	}
 	
 	public void stockAdder(Stock stock) {
