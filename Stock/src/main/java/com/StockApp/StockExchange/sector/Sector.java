@@ -2,6 +2,9 @@ package com.StockApp.StockExchange.sector;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.StockApp.StockExchange.sector.company.Company;
 
 @Entity
 public class Sector {
@@ -9,6 +12,8 @@ public class Sector {
 	@Id
 	Integer sectorId;
 	String companyId;
+	
+	
 	public Sector(Integer sectorId, String companyId) {
 		super();
 		this.sectorId = sectorId;

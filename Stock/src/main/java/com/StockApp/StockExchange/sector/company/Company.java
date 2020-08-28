@@ -1,11 +1,17 @@
 package com.StockApp.StockExchange.sector.company;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.StockApp.StockExchange.sector.company.stock.Stock;
 
 @Entity
 public class Company {
 	@javax.persistence.Id
-	Integer Id;
+	Integer companyId;
 	String ceo;
 	String brief;
 	String code;
@@ -13,10 +19,16 @@ public class Company {
 	String contactId;
 	String sectorId;
 	String stockExchangeId;
+	
+	@OneToMany(mappedBy="company")
+	Set<Stock> stock;
+	public Company() {}
+	
+	
 	public Company(Integer id, String ceo, String brief, String code, String name, String contactId, String sectorId,
-			String stockExchangeId) {
+			String stockExchangeId,Stock stock) {
 		super();
-		Id = id;
+		this.companyId = id;
 		this.ceo = ceo;
 		this.brief = brief;
 		this.code = code;
@@ -25,11 +37,31 @@ public class Company {
 		this.sectorId = sectorId;
 		this.stockExchangeId = stockExchangeId;
 	}
+	public Integer getCompanyId() {
+		return companyId;
+	}
+
+
+	public void setCompanyId(Integer companyId) {
+		this.companyId = companyId;
+	}
+
+
+	public Set<Stock> getStock() {
+		return stock;
+	}
+
+
+	public void setStock(Set<Stock> stock) {
+		this.stock = stock;
+	}
+
+
 	public Integer getId() {
-		return Id;
+		return companyId;
 	}
 	public void setId(Integer id) {
-		Id = id;
+		this.companyId = id;
 	}
 	public String getCeo() {
 		return ceo;

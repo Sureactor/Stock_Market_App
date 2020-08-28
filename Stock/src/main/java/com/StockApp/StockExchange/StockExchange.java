@@ -10,6 +10,10 @@ public class StockExchange {
 	private String brief;
 	private String remarks;
 	private String contactId;
+	
+	public StockExchange() {
+		
+	}
 	public StockExchange(Integer stockExchangeId, String brief, String remarks, String contactId) {
 		super();
 		this.stockExchangeId = stockExchangeId;

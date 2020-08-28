@@ -2,9 +2,14 @@ package com.StockApp.StockExchange.sector.company.stock;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.StockApp.StockExchange.sector.company.Company;
 
 @Entity
 public class Stock {
@@ -17,8 +22,16 @@ public class Stock {
 	double openPrice;
 	String companyId;
 	String stockExchangeId;
+	
+	@ManyToOne
+	@JoinColumn
+	Company company;
+	
+	public Stock() {
+		
+	}
 	public Stock(Integer stockId, double closePrice, double companyTurnover, Date date, LocalDateTime dateTime,
-			double openPrice, String companyId, String stockExchangeId) {
+			double openPrice, String companyId, String stockExchangeId,Company company) {
 		super();
 		this.stockId = stockId;
 		this.closePrice = closePrice;
@@ -28,6 +41,12 @@ public class Stock {
 		this.openPrice = openPrice;
 		this.companyId = companyId;
 		this.stockExchangeId = stockExchangeId;
+		}
+	public Company getCompany() {
+		return company;
+	}
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 	public Integer getStockId() {
 		return stockId;
