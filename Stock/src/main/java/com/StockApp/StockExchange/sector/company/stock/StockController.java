@@ -1,9 +1,11 @@
 package com.StockApp.StockExchange.sector.company.stock;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,8 +28,8 @@ public class StockController {
 		service.stockAdder(stock);
 	}
 	
-	@PostMapping("/user/company/stock/{companyId}/{date1}/{date2}")
-	public List<List<String>> compareStock(@PathVariable Integer companyId,@PathVariable String date1,@PathVariable String date2){
-		return null;
+	@GetMapping("/user/company/stock/{companyId}/{from}/{to}")
+	public List<Stock> compareStock(@PathVariable Integer companyId,@PathVariable Date from,@PathVariable Date to){
+		return service.stockComparer(companyId, from, to);
 	}
 }

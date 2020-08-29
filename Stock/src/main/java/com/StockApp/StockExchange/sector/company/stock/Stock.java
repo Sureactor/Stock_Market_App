@@ -1,9 +1,12 @@
 package com.StockApp.StockExchange.sector.company.stock;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -19,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","company"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Stock {
 	@Id
@@ -28,8 +31,16 @@ public class Stock {
 	double companyTurnover;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy", timezone = "UTC")
 	Date date;
+	Time time;
 //	String dateTime;
 
+	public Time getTime() {
+		return time;
+	}
+
+	public void setTime(Time time) {
+		this.time = time;
+	}
 	double openPrice;
 	String stockExchangeId;
 	
@@ -71,12 +82,16 @@ public class Stock {
 	public Date getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
-		
-		this.date = date;
+	public void setDate(String date) throws ParseException {
+//		SimpleDateFormat ft = 
+//			      new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+//		 
+//		this.date = ft.parse(date);
+		this.date = Date.valueOf(date);
 	}
 //	
 //	public String getDateTime() {
+//	hh:mm:ss a zzz
 //		return dateTime;
 //	}
 //

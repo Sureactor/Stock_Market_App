@@ -1,5 +1,6 @@
 package com.StockApp.StockExchange.sector.company.stock;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,5 +25,10 @@ public class StockService {
 		
 		return null;
 		
+	}
+	
+	public List<Stock> stockComparer(Integer companyId,Date from,Date to){
+		List<Stock> list = repo.findByDate(companyId, from, to);
+		return list;
 	}
 }
