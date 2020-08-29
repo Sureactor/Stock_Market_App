@@ -61,6 +61,20 @@ public class Stock {
 	}
 
 	
+	
+	
+	public Stock(Integer stockId, double closePrice, double companyTurnover, Date date, Time time, double openPrice,
+			String stockExchangeId, Company company) {
+		super();
+		this.stockId = stockId;
+		this.closePrice = closePrice;
+		this.companyTurnover = companyTurnover;
+		this.date = date;
+		this.time = time;
+		this.openPrice = openPrice;
+		this.stockExchangeId = stockExchangeId;
+	}
+
 	public Integer getStockId() {
 		return stockId;
 	}
