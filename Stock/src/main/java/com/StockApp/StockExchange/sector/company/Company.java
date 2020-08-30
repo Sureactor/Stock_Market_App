@@ -19,9 +19,9 @@ public class Company {
 	String brief;
 	String code;
 	String name;
-	String contactId;
-	String sectorId;
-	String stockExchangeId;
+	Integer contactId;
+	Integer sectorId;
+	Integer stockExchangeId;
 	
 	@OneToMany(mappedBy="company")
 	Set<Stock> stock;
@@ -92,22 +92,22 @@ public class Company {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getContactId() {
+	public Integer getContactId() {
 		return contactId;
 	}
-	public void setContactId(String contactId) {
+	public void setContactId(Integer contactId) {
 		this.contactId = contactId;
 	}
-	public String getSectorId() {
+	public Integer getSectorId() {
 		return sectorId;
 	}
-	public void setSectorId(String sectorId) {
+	public void setSectorId(Integer sectorId) {
 		this.sectorId = sectorId;
 	}
-	public String getStockExchangeId() {
+	public Integer getStockExchangeId() {
 		return stockExchangeId;
 	}
-	public void setStockExchangeId(String stockExchangeId) {
+	public void setStockExchangeId(Integer stockExchangeId) {
 		this.stockExchangeId = stockExchangeId;
 	}
 	

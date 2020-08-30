@@ -7,11 +7,9 @@ import javax.persistence.Id;
 public class CompanyStock {
 	@Id
 	Integer companyId;
-	String stockId;
-	public CompanyStock(Integer companyId, String stockId) {
-		super();
-		this.companyId = companyId;
-		this.stockId = stockId;
+	Integer stockId;
+	public CompanyStock() {
+		
 	}
 	public Integer getCompanyId() {
 		return companyId;
@@ -19,10 +17,10 @@ public class CompanyStock {
 	public void setCompanyId(Integer companyId) {
 		this.companyId = companyId;
 	}
-	public String getStockId() {
+	public Integer getStockId() {
 		return stockId;
 	}
-	public void setStockId(String stockId) {
+	public void setStockId(Integer stockId) {
 		this.stockId = stockId;
 	}
 	

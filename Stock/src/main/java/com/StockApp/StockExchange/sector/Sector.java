@@ -11,13 +11,11 @@ public class Sector {
 	
 	@Id
 	Integer sectorId;
-	String companyId;
+	Integer companyId;
 	
 	
-	public Sector(Integer sectorId, String companyId) {
-		super();
-		this.sectorId = sectorId;
-		this.companyId = companyId;
+	public Sector() {
+		
 	}
 	public Integer getSectorId() {
 		return sectorId;
@@ -25,10 +23,10 @@ public class Sector {
 	public void setSectorId(Integer sectorId) {
 		this.sectorId = sectorId;
 	}
-	public String getCompanyId() {
+	public Integer getCompanyId() {
 		return companyId;
 	}
-	public void setCompanyId(String companyId) {
+	public void setCompanyId(Integer companyId) {
 		this.companyId = companyId;
 	}
 	

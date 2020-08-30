@@ -42,7 +42,7 @@ public class Stock {
 		this.time = time;
 	}
 	double openPrice;
-	String stockExchangeId;
+	Integer stockExchangeId;
 	
 	
 	@ManyToOne
@@ -58,21 +58,6 @@ public class Stock {
 	}
 	public Stock() {
 		
-	}
-
-	
-	
-	
-	public Stock(Integer stockId, double closePrice, double companyTurnover, Date date, Time time, double openPrice,
-			String stockExchangeId, Company company) {
-		super();
-		this.stockId = stockId;
-		this.closePrice = closePrice;
-		this.companyTurnover = companyTurnover;
-		this.date = date;
-		this.time = time;
-		this.openPrice = openPrice;
-		this.stockExchangeId = stockExchangeId;
 	}
 
 	public Integer getStockId() {
@@ -96,12 +81,12 @@ public class Stock {
 	public Date getDate() {
 		return date;
 	}
-	public void setDate(String date) throws ParseException {
+	public void setDate(Date date) throws ParseException {
 //		SimpleDateFormat ft = 
 //			      new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
 //		 
 //		this.date = ft.parse(date);
-		this.date = Date.valueOf(date);
+		this.date = date;
 	}
 //	
 //	public String getDateTime() {
@@ -119,10 +104,10 @@ public class Stock {
 	public void setOpenPrice(double openPrice) {
 		this.openPrice = openPrice;
 	}
-	public String getStockExchangeId() {
+	public Integer getStockExchangeId() {
 		return stockExchangeId;
 	}
-	public void setStockExchangeId(String stockExchangeId) {
+	public void setStockExchangeId(Integer stockExchangeId) {
 		this.stockExchangeId = stockExchangeId;
 	}
 	

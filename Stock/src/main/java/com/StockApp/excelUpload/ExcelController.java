@@ -12,8 +12,9 @@ public class ExcelController {
 	@Autowired
 	ExcelService service = new ExcelService();
 	
+	
 	@PostMapping("/admin/comapny/addExcel")
-	public void addTodb(@RequestParam("File") MultipartFile file) throws InvalidFormatException {
-		service.saveExcel(file);
+	public void addTodb(@RequestParam("File") MultipartFile file,@RequestParam("Table") String table) throws Exception {
+		service.saveExcel(file,table);
 	}
 }

@@ -18,4 +18,12 @@ public class CompanyService {
 		Company comp = repo.findById(companyId).get();
 		return comp;
 	}
+	
+	public void companyUpdater(Company company) {
+		repo.save(company);
+	}
+	
+	public void companyDeleter(Integer companyId) {
+		repo.deleteById(companyId);
+	}
 }
