@@ -32,4 +32,24 @@ public class StockController {
 	public List<Stock> compareStock(@PathVariable Integer companyId,@PathVariable Date from,@PathVariable Date to){
 		return service.stockComparer(companyId, from, to);
 	}
+
+	/*
+	@PostMapping("/user/sector/stock/{from}/{to}")
+	public List<sectorstock> sectorStockGetter(@RequestBody List<Integer> companyId,@PathVariable Date from,@PathVariable Date to)
+	{
+		List<sectorstock> list=new ArrayList<sectorstock>();
+		Double d = service.sectorStockGetter(companyId, from);
+		sectorstock s= new sectorstock(from,d);
+		Double d2 = service.sectorStockGetter(companyId, to);
+		sectorstock s2= new sectorstock(to,d2);
+		list.add(s);
+		list.add(s2);
+		return list;
+		//return service.sectorStockGetter(companyId, from, to);
+		/*
+		for (Date date = from; date.before(to); date = date.plusDays(1))
+		{
+		    date.
+		}
+		*/
 }

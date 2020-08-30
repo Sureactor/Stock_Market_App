@@ -14,4 +14,9 @@ public interface StockRepository extends CrudRepository<Stock,Integer>,JpaReposi
 	
 	@Query(value="FROM Stock s WHERE s.date BETWEEN ?2 AND ?3 AND s.company.companyId=?1")
 	public List<Stock> findByDate(Integer companyId,Date from,Date to);
+
+	/*
+	@Query(value="select closedPrice FROM Stock s WHERE s.date=?2 AND s.company.companyId IN(?1)")
+	public double findSectorStock(List<Integer> companyId,Date from);
+	*/
 }
