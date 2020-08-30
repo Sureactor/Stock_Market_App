@@ -19,6 +19,7 @@ public class CompanyService {
 		return comp;
 	}
 	
+<<<<<<< HEAD
 	public void companyUpdater(Company company) {
 		repo.save(company);
 	}
@@ -32,5 +33,11 @@ public class CompanyService {
 		List<Company> comp = repo.findBySectorId(sectorId);
 		return comp;
 		 
+=======
+	public List<Company> CompanyGetter(){
+		List<Company> list = new ArrayList<>();
+		repo.findAll().forEach(list::add);
+		return list;
+>>>>>>> 7bd8b8d... Changes by Ajay 30 Aug 2020 on stockexchange & company
 	}
 }

@@ -1,16 +1,42 @@
 package com.StockApp.StockExchange;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+import com.StockApp.StockExchange.sector.company.Company;
+
+import javax.persistence.JoinColumn;
 
 @Entity
-public class StockExchange {
+public class StockExchange{
 	@Id
 	private Integer stockExchangeId;
 	private String brief;
 	private String remarks;
 	private String contactId;
+		
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "stockexchange_company",
+            joinColumns = {
+                    @JoinColumn(name = "stock_exchange_id")},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "company_id")})
+    private Set<Company> company = new HashSet<>();
 	
+	
+	public Set<Company> getCompany() {
+		return company;
+	}
+	public void setCompany(Set<Company> company) {
+		this.company = company;
+	}
 	public StockExchange() {
 		
 	}
@@ -45,7 +71,6 @@ public class StockExchange {
 	public void setContactId(String contactId) {
 		this.contactId = contactId;
 	}
-	
-	
+
 	
 }

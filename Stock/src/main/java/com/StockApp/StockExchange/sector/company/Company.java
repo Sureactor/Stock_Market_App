@@ -1,12 +1,16 @@
 package com.StockApp.StockExchange.sector.company;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.StockApp.StockExchange.StockExchange;
 import com.StockApp.StockExchange.sector.company.ipo.CompanyIPO;
 import com.StockApp.StockExchange.sector.company.stock.Stock;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -23,25 +27,43 @@ public class Company {
 	Integer sectorId;
 	Integer stockExchangeId;
 	
-	@OneToMany(mappedBy="company")
-	Set<Stock> stock;
-	@OneToMany(mappedBy="company")
-	Set<CompanyIPO> companyIPO;
 	public Company() {}
 	
 	
-//	public Company(Integer id, String ceo, String brief, String code, String name, String contactId, String sectorId,
-//			String stockExchangeId,Stock stock) {
-//		super();
-//		this.companyId = id;
-//		this.ceo = ceo;
-//		this.brief = brief;
-//		this.code = code;
-//		this.name = name;
-//		this.contactId = contactId;
-//		this.sectorId = sectorId;
-//		this.stockExchangeId = stockExchangeId;
-//	}
+	public Company(Integer id, String ceo, String brief, String code, String name, String contactId, String sectorId,
+			String stockExchangeId,Stock stock) {
+		super();
+		this.companyId = id;
+		this.ceo = ceo;
+		this.brief = brief;
+		this.code = code;
+		this.name = name;
+		this.contactId = contactId;
+		this.sectorId = sectorId;
+		this.stockExchangeId = stockExchangeId;
+	}
+	
+	
+	@OneToMany(mappedBy="company")
+	Set<Stock> stock;
+
+
+	
+	@OneToMany(mappedBy="company")
+	Set<CompanyIPO> companyIPO;
+	
+	@ManyToMany(mappedBy = "company", fetch = FetchType.LAZY)
+    private Set<StockExchange> stockexchange = new HashSet<>();
+	
+	public void setStockexchange(Set<StockExchange> stockexchange) {
+		this.stockexchange = stockexchange;
+	}
+	
+	public Set<StockExchange> getStockexchange() {
+		return stockexchange;
+	}
+
+	
 	public Integer getCompanyId() {
 		return companyId;
 	}

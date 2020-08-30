@@ -19,14 +19,14 @@ public class CompanyController {
 	@PostMapping("/admin/company/add")
 	public void addCompany(@RequestBody Company company) {
 		service.companyAdder(company);
-	}
-	
+	}	
 	
 	@GetMapping("/user/company/get/{companyId}") 
 	public Company getCompanyById(@PathVariable Integer companyId){
 		return service.CompanyByIdGetter(companyId);
 	}
 	
+<<<<<<< HEAD
 	@PutMapping("/admin/company/update")
 	public void updateCompany(@RequestBody Company company) {
 		service.companyAdder(company);
@@ -43,4 +43,11 @@ public class CompanyController {
 	}	
 
 
+=======
+	@GetMapping("/admin/company/get") 
+	public List<Company> getCompany(){
+		List<Company> list=service.CompanyGetter();
+		return list;
+	}
+>>>>>>> 7bd8b8d... Changes by Ajay 30 Aug 2020 on stockexchange & company
 }
