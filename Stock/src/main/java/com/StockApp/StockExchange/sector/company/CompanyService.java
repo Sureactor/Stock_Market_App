@@ -26,4 +26,11 @@ public class CompanyService {
 	public void companyDeleter(Integer companyId) {
 		repo.deleteById(companyId);
 	}
+
+	public List<Company> CompanyBySectorGetter(Integer sectorId) {
+		// TODO Auto-generated method stub
+		List<Company> comp = repo.findBySectorId(sectorId);
+		return comp;
+		 
+	}
 }

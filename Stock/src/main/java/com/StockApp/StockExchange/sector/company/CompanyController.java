@@ -37,4 +37,10 @@ public class CompanyController {
 		service.companyDeleter(companyId);
 	}
 	
+		@GetMapping("/user/company/getbysector/{sectorId}") 
+	public List<Company> getCompanyBySector(@PathVariable Integer sectorId){
+		return service.CompanyBySectorGetter(sectorId);
+	}	
+
+
 }
