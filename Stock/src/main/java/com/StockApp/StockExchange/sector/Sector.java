@@ -14,8 +14,10 @@ public class Sector {
 	Integer companyId;
 	
 	
-	public Sector() {
-		
+	public Sector(Integer sectorId, Integer companyId) {
+		super();
+		this.sectorId = sectorId;
+		this.companyId = companyId;
 	}
 	public Integer getSectorId() {
 		return sectorId;
