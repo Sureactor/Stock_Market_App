@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.StockApp.QueryClass;
+
 @Service
 public class StockService {
 	@Autowired
@@ -27,7 +29,12 @@ public class StockService {
 		
 	}
 	
-	public List<Stock> stockComparer(Integer companyId,Date from,Date to){
+	public List<QueryClass> sectorPriceGetter(Date from,Date to,List<Integer> lis){
+		List<QueryClass> list = repo.findByDateAndCompanyId(from, to,lis);
+		return list;
+	}
+	
+	public List<Stock> companyStockComparer(Integer companyId,Date from,Date to){
 		List<Stock> list = repo.findByDate(companyId, from, to);
 		return list;
 	}

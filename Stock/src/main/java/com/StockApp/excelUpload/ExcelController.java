@@ -13,7 +13,7 @@ public class ExcelController {
 	ExcelService service = new ExcelService();
 	
 	
-	@PostMapping("/admin/comapny/addExcel")
+	@PostMapping("/admin/company/addExcel")
 	public void addTodb(@RequestParam("File") MultipartFile file,@RequestParam("Table") String table) throws Exception {
 		service.saveExcel(file,table);
 	}

@@ -20,6 +20,7 @@ import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.StockApp.StockExchange.sector.company.Company;
@@ -27,6 +28,8 @@ import com.StockApp.StockExchange.sector.company.Company;
 public class ExcelSheetToDb {
 
 	static Excel excel;
+	
+	
 	public static <T> List<T> excelToTutorials(MultipartFile file,String table) throws Exception {
 		try {
 			  Path tempDir = Files.createTempDirectory("");

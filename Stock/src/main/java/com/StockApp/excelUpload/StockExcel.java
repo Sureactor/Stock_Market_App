@@ -3,6 +3,11 @@ package com.StockApp.excelUpload;
 import java.sql.Date;
 import java.sql.Time;
 import java.text.ParseException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +57,20 @@ public class StockExcel implements Excel {
             break;
 
           case 3:
-            stock.setDate(cell.getDateCellValue());
+        	    java.util.Date date = cell.getDateCellValue();
+        		System.out.println("Date is: "+date);
+        			
+        		//Getting the default zone id
+        		ZoneId defaultZoneId = ZoneId.systemDefault();
+        			
+        		//Converting the date to Instant
+        		Instant instant = date.toInstant();
+        			
+        		//Converting the Date to LocalDate
+        		LocalDate localDate = instant.atZone(defaultZoneId).toLocalDate();
+        		java.sql.Date d = java.sql.Date.valueOf(localDate);
+        	  System.out.println("*****************"+d+"******************");
+           stock.setDate(d.toString());
             break;
             
           case 4:
@@ -62,7 +80,9 @@ public class StockExcel implements Excel {
         	  stock.setStockExchangeId(Integer.valueOf((int)cell.getNumericCellValue()));
         	  break;
           case 6:
-        	  stock.setTime(Time.valueOf(cell.getStringCellValue()));
+        	  LocalTime time = cell.getLocalDateTimeCellValue().toLocalTime();
+        	  stock.setTime(Time.valueOf(time));
+        	  System.out.println("*****************"+time+"******************");
         	  break;
           case 7:
         	  Company comp= new Company();

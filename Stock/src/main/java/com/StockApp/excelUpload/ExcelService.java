@@ -27,6 +27,7 @@ import com.StockApp.StockExchange.sector.company.stock.StockRepository;
 public class ExcelService {
 	@Autowired
 	CompanyRepository compRepo;
+	@Autowired
 	StockRepository stockRepo;
 	
 	

@@ -38,8 +38,8 @@ public class Stock {
 		return time;
 	}
 
-	public void setTime(Time time) {
-		this.time = time;
+	public void setTime(Time time2) {
+		this.time = time2;
 	}
 	double openPrice;
 	Integer stockExchangeId;
@@ -81,12 +81,12 @@ public class Stock {
 	public Date getDate() {
 		return date;
 	}
-	public void setDate(Date date) throws ParseException {
+	public void setDate(String d) throws ParseException {
 //		SimpleDateFormat ft = 
 //			      new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
 //		 
 //		this.date = ft.parse(date);
-		this.date = date;
+		this.date = Date.valueOf(d);
 	}
 //	
 //	public String getDateTime() {
