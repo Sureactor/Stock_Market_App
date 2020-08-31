@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.StockApp.QueryClass;
+import com.StockApp.StockExchange.sector.company.CompanyService;
 
 @RestController
 public class StockController {
 	@Autowired
 	StockService service = new StockService();
+	CompanyService companyservice=new CompanyService();
 	@RequestMapping("/user/company/{companyId}")
 	public List<Stock> getStockByCompanyId(@PathVariable Integer companyId){
 		List<Stock> list = service.StockGetterByCompanyId(companyId);
@@ -43,6 +45,16 @@ public class StockController {
 	public List<Stock> compareCompany(@PathVariable Integer companyId,@PathVariable Date from,@PathVariable Date to){
 		return service.companyStockComparer(companyId, from, to);
 	}
+	
+
+	@PostMapping("/user/sector/stock/{sectorId}/{from}/{to}")
+	public List<QueryClass> getsectorStock(@PathVariable Integer sectorId,@PathVariable Date from,@PathVariable Date to)
+	{
+		List<Integer> companyId=companyservice.CompanyIdBySectorGetter(sectorId);
+	    return service.sectorStockGetter(companyId,from,to);
+		
+	}
+
 
 	/*
 	@PostMapping("/user/sector/stock/{from}/{to}")

@@ -30,8 +30,8 @@ public class Company {
 	public Company() {}
 	
 	
-	public Company(Integer id, String ceo, String brief, String code, String name, String contactId, String sectorId,
-			String stockExchangeId,Stock stock) {
+	public Company(Integer id, String ceo, String brief, String code, String name, Integer contactId, Integer sectorId,
+			Integer stockExchangeId,Stock stock) {
 		super();
 		this.companyId = id;
 		this.ceo = ceo;

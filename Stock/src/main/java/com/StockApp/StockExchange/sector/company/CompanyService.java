@@ -19,7 +19,6 @@ public class CompanyService {
 		return comp;
 	}
 	
-<<<<<<< HEAD
 	public void companyUpdater(Company company) {
 		repo.save(company);
 	}
@@ -32,12 +31,18 @@ public class CompanyService {
 		// TODO Auto-generated method stub
 		List<Company> comp = repo.findBySectorId(sectorId);
 		return comp;
+	}
 		 
-=======
 	public List<Company> CompanyGetter(){
 		List<Company> list = new ArrayList<>();
 		repo.findAll().forEach(list::add);
 		return list;
->>>>>>> 7bd8b8d... Changes by Ajay 30 Aug 2020 on stockexchange & company
+	}
+	
+	public List<Integer> CompanyIdBySectorGetter(Integer sectorId) {
+		// TODO Auto-generated method stub
+		List<Integer> comp = repo.findIdBySectorId(sectorId);
+		return comp;
+		 
 	}
 }
