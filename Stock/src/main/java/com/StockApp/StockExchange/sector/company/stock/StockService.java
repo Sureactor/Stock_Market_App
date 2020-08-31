@@ -38,4 +38,11 @@ public class StockService {
 		List<Stock> list = repo.findByDate(companyId, from, to);
 		return list;
 	}
+	 /*
+	public Double sectorStockGetter(List<Integer> companyId, Date from) {
+		// TODO Auto-generated method stub
+		Double d=repo.findSectorStock(companyId,from);
+		return d;
+	}
+	*/
 }

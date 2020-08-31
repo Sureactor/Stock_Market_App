@@ -12,12 +12,16 @@ public class StockExchangeService {
 	StockExchangeRepository repo;
 	public void stockExchangeAdder(StockExchange stockExchange) {
 		repo.save(stockExchange);
-	}
-	
+	}	
 	
 	public List<StockExchange> StockExchangeGetter(){
 		List<StockExchange> list = new ArrayList<>();
 		repo.findAll().forEach(list::add);
 		return list;
+	}
+
+	public StockExchange StockExchangeByIdGetter(Integer stockExchangeId) {
+		StockExchange stockexchange=repo.findById(stockExchangeId).get();
+		return stockexchange;
 	}
 }
