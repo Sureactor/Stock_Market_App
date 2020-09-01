@@ -30,18 +30,7 @@ public class Company {
 	public Company() {}
 	
 	
-	public Company(Integer id, String ceo, String brief, String code, String name, String contactId, String sectorId,
-			String stockExchangeId,Stock stock) {
-		super();
-		this.companyId = id;
-		this.ceo = ceo;
-		this.brief = brief;
-		this.code = code;
-		this.name = name;
-		this.contactId = contactId;
-		this.sectorId = sectorId;
-		this.stockExchangeId = stockExchangeId;
-	}
+	
 	
 	
 	@OneToMany(mappedBy="company")
