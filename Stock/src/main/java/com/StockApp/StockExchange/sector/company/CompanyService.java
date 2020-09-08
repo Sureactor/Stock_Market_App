@@ -39,10 +39,16 @@ public class CompanyService {
 		return list;
 	}
 	
+	
 	public List<Integer> CompanyIdBySectorGetter(Integer sectorId) {
 		// TODO Auto-generated method stub
 		List<Integer> comp = repo.findIdBySectorId(sectorId);
 		return comp;
-		 
+	}
+
+	public List<Company> CompanyBySectorExchangeGetter(Integer sectorId, Integer exchangeId) {
+		// TODO Auto-generated method stub
+		List<Company> comp=repo.findBySectorIdAndStockExchangeId(sectorId,exchangeId);
+		return comp;
 	}
 }

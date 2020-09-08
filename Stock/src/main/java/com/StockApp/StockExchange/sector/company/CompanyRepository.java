@@ -18,4 +18,8 @@ public interface CompanyRepository extends CrudRepository<Company,Integer>{
 
 		List<Company> findBySectorId(Integer sectorId);
 
+
+
+		List<Company> findBySectorIdAndStockExchangeId(Integer sectorId, Integer exchangeId);
+
 }

@@ -1,5 +1,7 @@
 package com.StockApp.User;
 
+import javax.persistence.Entity;
+
 public class Admin {
 
 	String username;

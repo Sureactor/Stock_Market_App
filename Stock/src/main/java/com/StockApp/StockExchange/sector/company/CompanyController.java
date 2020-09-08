@@ -3,6 +3,7 @@ package com.StockApp.StockExchange.sector.company;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins="http://localhost:4200")	
 public class CompanyController {
 	@Autowired
 	CompanyService service = new CompanyService();
@@ -40,8 +42,22 @@ public class CompanyController {
 	public List<Company> getCompanyBySector(@PathVariable Integer sectorId){
 		return service.CompanyBySectorGetter(sectorId);
 	}	
+		@GetMapping("/user/company/getbysectorexchange/{sectorId}/{exchangeId}") 
+		public List<Company> getCompanyBySectorExchange(@PathVariable Integer sectorId,@PathVariable Integer exchangeId){
+			return service.CompanyBySectorExchangeGetter(sectorId,exchangeId);
+		}	
 
-
+		@GetMapping("/user/company/getIdbysector/{sectorId}") 
+		public List<Integer> getCompanyIdBySector(@PathVariable Integer sectorId){
+			return service.CompanyIdBySectorGetter(sectorId);
+		}	
+    
+		@GetMapping("/user/company/get") 
+		public List<Company> getCompanyList(){
+			List<Company> list=service.CompanyGetter();
+			return list;
+		}
+		
 	@GetMapping("/admin/company/get") 
 	public List<Company> getCompany(){
 		List<Company> list=service.CompanyGetter();

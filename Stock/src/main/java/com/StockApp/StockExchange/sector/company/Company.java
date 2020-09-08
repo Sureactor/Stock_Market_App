@@ -6,11 +6,14 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.StockApp.StockExchange.StockExchange;
+import com.StockApp.StockExchange.sector.Sector;
+import com.StockApp.StockExchange.sector.SectorDetails;
 import com.StockApp.StockExchange.sector.company.ipo.CompanyIPO;
 import com.StockApp.StockExchange.sector.company.stock.Stock;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -46,8 +49,6 @@ public class Company {
 	
 	@OneToMany(mappedBy="company")
 	Set<Stock> stock;
-
-
 	
 	@OneToMany(mappedBy="company")
 	Set<CompanyIPO> companyIPO;
@@ -126,12 +127,15 @@ public class Company {
 	public void setSectorId(Integer sectorId) {
 		this.sectorId = sectorId;
 	}
+	
 	public Integer getStockExchangeId() {
 		return stockExchangeId;
 	}
 	public void setStockExchangeId(Integer stockExchangeId) {
 		this.stockExchangeId = stockExchangeId;
 	}
+
+
 	
 	
 }

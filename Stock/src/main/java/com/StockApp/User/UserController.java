@@ -1,6 +1,7 @@
 package com.StockApp.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +14,7 @@ import com.StockApp.StockExchange.sector.company.CompanyService;
 
 
 @RestController
+@CrossOrigin(origins="http://localhost:4200")
 
 public class UserController {
 	
@@ -23,6 +25,10 @@ public class UserController {
 	@PostMapping("/user/login")
 	public boolean loginUser(@RequestBody User user) {
 		return service.validateUser(user.getUsername(),user.getPassword());
+	}
+	@PostMapping("/user/forgotpassword")
+	public String checker(@RequestBody User user) {
+		return service.check(user.getUsername(),user.getEmail());
 	}
 	
 	@PostMapping("/admin/login")
@@ -38,4 +44,17 @@ public class UserController {
 	public void updatePassword(@RequestBody User user,@PathVariable String username) {
 		 service.passwordUpdate(username,user);
 	}
+	
+	@RequestMapping(method=RequestMethod.PUT, value="/user/updateprofile/{username}")
+	public void updateProfile(@RequestBody User user,@PathVariable String username) {
+		 service.profileUpdate(username,user);
+	}
+	/*
+	@RequestMapping(method=RequestMethod.POST, value="/user/forgotpassword")
+	public String forgotPassword(@RequestBody User user) {
+		return service.sendemail(user.getEmail());
+		
+	}
+	*/
+	
 }
