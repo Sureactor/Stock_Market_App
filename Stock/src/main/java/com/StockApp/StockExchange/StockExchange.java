@@ -20,7 +20,7 @@ public class StockExchange{
 	private Integer stockExchangeId;
 	private String brief;
 	private String remarks;
-	private String contactId;
+	private Integer contactId;
 		
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(name = "stockexchange_company",
@@ -40,13 +40,13 @@ public class StockExchange{
 	public StockExchange() {
 		
 	}
-	public StockExchange(Integer stockExchangeId, String brief, String remarks, String contactId) {
-		super();
-		this.stockExchangeId = stockExchangeId;
-		this.brief = brief;
-		this.remarks = remarks;
-		this.contactId = contactId;
-	}
+//	public StockExchange(Integer stockExchangeId, String brief, String remarks, String contactId) {
+//		super();
+//		this.stockExchangeId = stockExchangeId;
+//		this.brief = brief;
+//		this.remarks = remarks;
+//		this.contactId = contactId;
+//	}
 	public Integer getStockExchangeId() {
 		return stockExchangeId;
 	}
@@ -65,10 +65,10 @@ public class StockExchange{
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-	public String getContactId() {
+	public Integer getContactId() {
 		return contactId;
 	}
-	public void setContactId(String contactId) {
+	public void setContactId(Integer contactId) {
 		this.contactId = contactId;
 	}
 

@@ -19,7 +19,7 @@ public class ExcelFactory {
 			case "STOCK" :
 				return new StockExcel();
 		}
-		return new companyExcel();
+		return null;
 	}
 	
 	

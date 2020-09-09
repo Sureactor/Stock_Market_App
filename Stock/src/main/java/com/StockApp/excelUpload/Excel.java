@@ -20,4 +20,5 @@ public interface Excel {
 	public <T> List<T> saveToDb();
 	public void createObject();
 	void setParameters(Cell currentCell, int i) throws Exception;
+	public boolean check(List<String> l);
 }

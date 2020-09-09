@@ -13,12 +13,18 @@ public class SectorService {
 
 	@Autowired
 	SectorDetailsRepository repo;
-
+	
+	@Autowired
+	SectorRepository repo1;
 	public List<SectorDetails> SectorsGetter() {
 		// TODO Auto-generated method stub
 		List<SectorDetails> list = new ArrayList<>();
 		repo.findAll().forEach(list::add);
 		return list;
+	}
+	
+	public void Add(Sector sec) {
+		repo1.save(sec);
 	}
 	
 

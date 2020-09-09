@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -16,6 +18,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.jpa.JpaObjectRetrievalFailureException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -41,8 +44,9 @@ public class ExcelService {
 			break;
 		}
 	}
-	public void saveExcel(MultipartFile file,String table) throws Exception {
+	public void saveExcel(MultipartFile file,String table) throws IllegalColumnName, Exception {
+		try {
 		List list = ExcelSheetToDb.excelToTutorials(file,table);
-		saveToRepo(table,list);
+		saveToRepo(table,list);}catch(EntityNotFoundException e) {System.out.println("her++++++++++");}
 	}
 }

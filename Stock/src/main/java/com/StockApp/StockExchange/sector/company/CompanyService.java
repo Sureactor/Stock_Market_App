@@ -3,15 +3,19 @@ package com.StockApp.StockExchange.sector.company;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CompanyService {
+	
 	@Autowired
 	CompanyRepository repo;
 	public void companyAdder(Company company) {
 		repo.save(company);
+		System.out.println(repo);
 	}
 	
 	public Company CompanyByIdGetter(Integer companyId){
@@ -19,7 +23,6 @@ public class CompanyService {
 		return comp;
 	}
 	
-<<<<<<< HEAD
 	public void companyUpdater(Company company) {
 		repo.save(company);
 	}
@@ -32,12 +35,29 @@ public class CompanyService {
 		// TODO Auto-generated method stub
 		List<Company> comp = repo.findBySectorId(sectorId);
 		return comp;
-		 
-=======
+	}
+	
+	public List<Company> AllCompanyGetter(){
+		List<Company> list = new ArrayList<>();
+		repo.findAll().forEach(list::add); 
+		return list;
+	}
 	public List<Company> CompanyGetter(){
 		List<Company> list = new ArrayList<>();
 		repo.findAll().forEach(list::add);
 		return list;
->>>>>>> 7bd8b8d... Changes by Ajay 30 Aug 2020 on stockexchange & company
 	}
+	
+	public List<Integer> CompanyIdBySectorGetter(Integer sectorId) {
+		// TODO Auto-generated method stub
+		List<Integer> comp = repo.findIdBySectorId(sectorId);
+		return comp;
+		 
+	}
+	
+	public List<String> companyNameGetter(){
+		return repo.findCompanyName();
+	}
+	
+
 }

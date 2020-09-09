@@ -38,6 +38,11 @@ public class StockService {
 		List<Stock> list = repo.findByDate(companyId, from, to);
 		return list;
 	}
+	
+	public List<QueryClass> sectorStockGetter(List<Integer> companyId, Date from,Date to) {
+		List<QueryClass> list=repo.findByDateSector(from, to, companyId);
+		return list;
+	}
 	 /*
 	public Double sectorStockGetter(List<Integer> companyId, Date from) {
 		// TODO Auto-generated method stub

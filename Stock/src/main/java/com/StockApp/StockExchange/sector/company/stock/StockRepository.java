@@ -19,6 +19,9 @@ public interface StockRepository extends CrudRepository<Stock,Integer>,JpaReposi
 	
 	@Query(value="FROM Stock s WHERE s.date BETWEEN cast(?2 as date) AND cast(?3 as date) AND s.company.companyId=?1")
 	public List<Stock> findByDate(Integer companyId,Date from,Date to);
+	
+	@Query(value = "SELECT new com.StockApp.QueryClass(SUM(s.closePrice),s.date) FROM Stock s WHERE s.date BETWEEN cast(?1 as date) AND cast(?2 as date) AND s.company.companyId IN ?3 GROUP BY s.date")
+	public List<QueryClass> findByDateSector(Date from,Date to,List<Integer> li);
 
 
 }

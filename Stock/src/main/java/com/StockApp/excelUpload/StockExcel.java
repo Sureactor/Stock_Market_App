@@ -94,4 +94,10 @@ public class StockExcel implements Excel {
 		}
 	}
 
+	@Override
+	public boolean check(List<String> l) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
 }

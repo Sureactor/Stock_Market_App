@@ -1,5 +1,7 @@
 package com.StockApp.StockExchange.sector.company.ipo;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -13,8 +15,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class CompanyIPO {
 	@Id
 	Integer ipoId;
-	String openTime;
-	String closeTime;
+	Date openTime;
+	Date closeTime;
 	String remarks;
 	double sharePrice;
 	int totalShares;
@@ -31,17 +33,17 @@ public class CompanyIPO {
 	public void setIpoId(Integer ipoId) {
 		this.ipoId = ipoId;
 	}
-	public String getOpenTime() {
+	public Date getOpenTime() {
 		return openTime;
 	}
 	public void setOpenTime(String openTime) {
-		this.openTime = openTime;
+		this.openTime = Date.valueOf(openTime);
 	}
-	public String getCloseTime() {
+	public Date getCloseTime() {
 		return closeTime;
 	}
 	public void setCloseTime(String closeTime) {
-		this.closeTime = closeTime;
+		this.closeTime = Date.valueOf(closeTime);
 	}
 	public String getRemarks() {
 		return remarks;
