@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+<<<<<<< HEAD
 @CrossOrigin(origins="http://localhost:4200")
+=======
+@CrossOrigin(origins="http://localhost:4200")	
+>>>>>>> 41c101653f51886c74fbaecbdc20c49de35e6d78
 public class CompanyController {
 	@Autowired
 	CompanyService service = new CompanyService();
@@ -47,8 +51,22 @@ public class CompanyController {
 	public List<Company> getCompanyBySector(@PathVariable Integer sectorId){
 		return service.CompanyBySectorGetter(sectorId);
 	}	
+		@GetMapping("/user/company/getbysectorexchange/{sectorId}/{exchangeId}") 
+		public List<Company> getCompanyBySectorExchange(@PathVariable Integer sectorId,@PathVariable Integer exchangeId){
+			return service.CompanyBySectorExchangeGetter(sectorId,exchangeId);
+		}	
 
-
+		@GetMapping("/user/company/getIdbysector/{sectorId}") 
+		public List<Integer> getCompanyIdBySector(@PathVariable Integer sectorId){
+			return service.CompanyIdBySectorGetter(sectorId);
+		}	
+    
+		@GetMapping("/user/company/get") 
+		public List<Company> getCompanyList(){
+			List<Company> list=service.CompanyGetter();
+			return list;
+		}
+		
 	@GetMapping("/admin/company/get") 
 	public List<Company> getCompany(){
 		List<Company> list=service.CompanyGetter();

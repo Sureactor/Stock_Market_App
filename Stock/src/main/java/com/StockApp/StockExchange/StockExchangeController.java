@@ -27,6 +27,12 @@ public class StockExchangeController {
 		return list;
 	}
 	
+	@GetMapping("/user/stockexchange/get")
+	public List<StockExchange> getStockExchangeUser(){
+		List<StockExchange> list = service.StockExchangeGetter();
+		return list;
+	}
+	
 	@GetMapping("admin/stockexchange/get/{stockExchangeId}")
 	public StockExchange getStockExchangeById(@PathVariable Integer stockExchangeId)
 	{

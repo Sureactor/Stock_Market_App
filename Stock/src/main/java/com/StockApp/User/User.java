@@ -12,12 +12,19 @@ public class User {
 	String email;
 	String mobile;
 	Integer confirm;
+	String forgottoken;
 	
 	
+	public String getForgottoken() {
+		return forgottoken;
+	}
+	public void setForgottoken(String forgottoken) {
+		this.forgottoken = forgottoken;
+	}
 	public User() {
 		super();
 	}
-	public User(Integer id, String username, String password, String email, String mobile, Integer confirm) {
+	public User(Integer id, String username, String password, String email, String mobile, Integer confirm,String forgottoken) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -25,6 +32,7 @@ public class User {
 		this.email = email;
 		this.mobile = mobile;
 		this.confirm = confirm;
+		this.forgottoken= forgottoken;
 	}
 	public Integer getId() {
 		return id;
