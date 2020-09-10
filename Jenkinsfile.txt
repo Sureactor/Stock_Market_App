@@ -8,7 +8,7 @@ pipeline {
     stages {
          stage('BuildBackend') {
             steps {
-                git 'https://github.com/Sureactor/Stock_Market_App.git'
+                git branch: 'Surendar', url: 'https://github.com/Sureactor/Stock_Market_App'
                 dir('Stock') {
                     bat 'mvn -B -DskipTests clean package'
                 }
