@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+    tools {
+        maven 'M3'
+        jdk 'JDK'
+        nodejs 'NODE'
+    }
+    stages {
+         stage('BuildBackend') {
+            steps {
+                git 'https://github.com/Sureactor/Stock_Market_App.git'
+                dir('Stock') {
+                    bat 'mvn -B -DskipTests clean package'
+                }
+            }
+        }
+    }
+}

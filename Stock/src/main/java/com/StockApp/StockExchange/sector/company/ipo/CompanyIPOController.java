@@ -21,9 +21,9 @@ public class CompanyIPOController {
 	public void addCompanyIPO(@RequestBody CompanyIPO ipo) {
 		service.companyIPOAdder(ipo);
 	}
-	@RequestMapping("/user/company/ipo")
-	public List<CompanyIPO> getCompanyIPO(){
-		return service.companyIPOGetter();
+	@RequestMapping("/user/company/ipo/{id}")
+	public List<CompanyIPO> getCompanyIPO(@PathVariable Integer id){
+		return service.companyIPOGetter(id);
 	}
 	
 	@RequestMapping("/user/company/ipolatest")
@@ -35,4 +35,9 @@ public class CompanyIPOController {
 	public void updateCompanyIPO(@RequestBody CompanyIPO ipo) {
 		service.companyIPOAdder(ipo);
 	}
+	@RequestMapping("/user/company/ipo/get/{id}")
+	public CompanyIPO getIPObyId(@PathVariable Integer id){
+		return service.ipoGetter(id);
+	}
+	
 }
