@@ -1,11 +1,14 @@
 package com.StockApp.User;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 @Entity
 public class User {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	Integer id;
 	String username;
 	String password;
@@ -24,7 +27,7 @@ public class User {
 	public User() {
 		super();
 	}
-	public User(Integer id, String username, String password, String email, String mobile, Integer confirm,String forgottoken) {
+	public User(Integer id, String username, String password, String email, String mobile, Integer confirm) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -32,7 +35,7 @@ public class User {
 		this.email = email;
 		this.mobile = mobile;
 		this.confirm = confirm;
-		this.forgottoken= forgottoken;
+		//this.forgottoken= forgottoken;
 	}
 	public Integer getId() {
 		return id;

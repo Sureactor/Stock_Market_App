@@ -4,6 +4,12 @@ public class EmailAttribute {
 	private String address;
 	private String subject;
 	private String body;
+	public EmailAttribute(String email, String subject2, String body2) {
+		// TODO Auto-generated constructor stub
+		this.address=email;
+		this.subject=subject2;
+		this.body=body2;
+	}
 	public String getAddress() {
 		return address;
 	}

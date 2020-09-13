@@ -1,5 +1,8 @@
 package com.StockApp.User;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +18,6 @@ import com.StockApp.StockExchange.sector.company.CompanyService;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
-
 public class UserController {
 	
 	@Autowired
@@ -27,10 +29,14 @@ public class UserController {
 		return service.validateUser(user.getUsername(),user.getPassword());
 	}
 	@PostMapping("/user/forgotpassword")
-	public String checker(@RequestBody User user) {
-		return service.check(user.getUsername(),user.getEmail());
+	public boolean checker(@RequestBody User user) throws AddressException, MessagingException {
+		return service.check(user.getEmail());
 	}
 	
+	@PostMapping("/user/gettoken")
+	public boolean gettoken(@RequestBody User user) throws AddressException, MessagingException {
+		return service.tokengetter(user.getEmail(),user.getForgottoken());
+	}
 	@PostMapping("/admin/login")
 	public boolean loginAdmin(@RequestBody Admin admin) {
 		return service.validateAdmin(admin.getUsername(),admin.getPassword());
@@ -40,9 +46,10 @@ public class UserController {
 		return service.addUser(user);
 	}
 	
-	@RequestMapping(method=RequestMethod.PUT, value="/user/forgot/{username}")
-	public void updatePassword(@RequestBody User user,@PathVariable String username) {
-		 service.passwordUpdate(username,user);
+	//@RequestMapping(method=RequestMethod.PUT, value="/user/forgot")
+	@PostMapping("/user/forgot")
+	public boolean updatePassword(@RequestBody User user) {
+		 return service.passwordUpdate(user.getEmail(),user);
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/user/updateprofile/{username}")

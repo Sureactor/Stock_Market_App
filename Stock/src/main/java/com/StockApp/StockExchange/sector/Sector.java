@@ -16,15 +16,6 @@ public class Sector {
 	@Id
 	Integer sectorId;
 	Integer companyId;
-<<<<<<< HEAD
-	
-	public Sector() {
-		
-	}
-=======
-
-	
->>>>>>> 41c101653f51886c74fbaecbdc20c49de35e6d78
 	public Sector(Integer sectorId, Integer companyId) {
 		super();
 		this.sectorId = sectorId;

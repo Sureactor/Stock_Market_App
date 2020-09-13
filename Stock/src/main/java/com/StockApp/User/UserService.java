@@ -1,6 +1,10 @@
 package com.StockApp.User;
 
+import java.util.Random;
 import java.util.UUID;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,14 +12,15 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
 import com.StockApp.StockExchange.sector.company.Company;
-
+import com.StockApp.email.*;
 
 @Service
 public class UserService {
 	
 	@Autowired
 	UserRepository repo;
-	
+	@Autowired
+	Email mailobj;
 	
 	public boolean validateUser(String username,String password){
 		User user = repo.findByUsernameAndPassword(username,password);
@@ -24,25 +29,21 @@ public class UserService {
 		else
 			return true;
 	}
-	public String check(String username,String email){
-		User user = repo.findByUsernameAndEmail(username,email);
+	public boolean check(String email) throws AddressException, MessagingException{
+		//User user = repo.findByUsernameAndEmail(username,email);
+		User user = repo.findByEmail(email);
 		if(user==null)
-			return "Invalid email id";
+			return false;
 		else
 		{
-			JavaMailSender mailSender = null;
-			user.setForgottoken(UUID.randomUUID().toString());
+			int n = 10000 + new Random().nextInt(90000);
+			user.setForgottoken(Integer.toString(n));
 			repo.save(user);
-			String appUrl = "http://localhost:8081";
-			SimpleMailMessage passwordResetEmail = new SimpleMailMessage();
-			passwordResetEmail.setFrom("cooper.hauck@ethereal.email");
-			passwordResetEmail.setTo(user.getEmail());
-			passwordResetEmail.setSubject("Password Reset Request");
-			passwordResetEmail.setText("To reset your password, click the link below:\n" + appUrl
-					+ "/reset?token=" + user.getForgottoken());
-			
-			mailSender.send(passwordResetEmail);
-			return "check your mail";
+			String subject="StockApp: Password reset request";
+			String body="OTP for password change is "+Integer.toString(n);;
+			EmailAttribute obj= new EmailAttribute(email,subject,body);
+			mailobj.sendMail(obj);
+			return true;
 			
 		}
 	}
@@ -55,11 +56,16 @@ public class UserService {
 
 	
 
-	public void passwordUpdate(String username, User user) {
+	public boolean passwordUpdate(String email, User user) {
 		// TODO Auto-generated method stub
-		User userobj = repo.findByUsername(username); 
+		System.out.print(email+ user.getUsername());
+		User userobj = repo.findByEmail(email); 
+		//User userobj = repo.findByUsername(username);
+		System.out.print(email+ userobj.getUsername());
 		userobj.setPassword(user.getPassword()); 
+		System.out.print("password changed");
 		repo.save(userobj);
+		return true;
 		
 	}
 
@@ -86,6 +92,14 @@ public class UserService {
 			return "Check your email for the link";
 		else
 			return "no";
+	}
+	public boolean tokengetter(String email, String token) {
+		// TODO Auto-generated method stub
+		User user = repo.findByEmail(email);
+		if(token.equals(user.getForgottoken()))
+		return true;
+		else
+			return false;
 	}
 	
 

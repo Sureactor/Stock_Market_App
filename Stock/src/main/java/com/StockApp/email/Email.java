@@ -28,10 +28,12 @@ public class Email {
 	private String username;
 	@Value("${gmail.password}")
 	private String password;
+	
 	@PostMapping("/sendMail")
 	public String sendMail(@RequestBody EmailAttribute email) throws AddressException, MessagingException {
-		System.out.println("++++++++++"+username+"   "+password+"+++++++");
+		System.out.println("++++++++++"+username+"  "+password+"+++++++");
 		send(email);
+		System.out.println("email success");
 		return "Email sent Successfully";
 	}
 	
@@ -54,7 +56,7 @@ public class Email {
 //		
 //		Message msg = new MimeMessage(session);
 		msg.setFrom(new InternetAddress(username,false));
-		msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("suredirector1998@gmail.com"));
+		msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email.getAddress()));
 		msg.setSubject(email.getSubject());
 		msg.setContent(email.getBody(),"text/html");
 		msg.setSentDate(new Date());

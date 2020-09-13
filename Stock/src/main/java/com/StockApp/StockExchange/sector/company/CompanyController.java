@@ -14,11 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-<<<<<<< HEAD
 @CrossOrigin(origins="http://localhost:4200")
-=======
-@CrossOrigin(origins="http://localhost:4200")	
->>>>>>> 41c101653f51886c74fbaecbdc20c49de35e6d78
 public class CompanyController {
 	@Autowired
 	CompanyService service = new CompanyService();

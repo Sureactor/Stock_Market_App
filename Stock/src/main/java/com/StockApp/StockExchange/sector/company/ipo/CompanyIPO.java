@@ -1,10 +1,8 @@
 package com.StockApp.StockExchange.sector.company.ipo;
 
 import java.sql.Date;
-<<<<<<< HEAD
-=======
+
 import java.text.ParseException;
->>>>>>> 41c101653f51886c74fbaecbdc20c49de35e6d78
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,13 +18,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class CompanyIPO {
 	@Id
 	Integer ipoId;
-<<<<<<< HEAD
 	Date openTime;
-=======
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy", timezone = "UTC")
-	Date openTime;
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy", timezone = "UTC")
->>>>>>> 41c101653f51886c74fbaecbdc20c49de35e6d78
+	//@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy", timezone = "UTC")
 	Date closeTime;
 	String remarks;
 	double sharePrice;
@@ -44,9 +37,6 @@ public class CompanyIPO {
 	public void setIpoId(Integer ipoId) {
 		this.ipoId = ipoId;
 	}
-<<<<<<< HEAD
-	public Date getOpenTime() {
-=======
 	/*
 	public String getOpenTime() {
 >>>>>>> 41c101653f51886c74fbaecbdc20c49de35e6d78
