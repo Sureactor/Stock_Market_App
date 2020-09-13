@@ -15,9 +15,9 @@ import com.StockApp.StockExchange.sector.company.stock.Stock;
 public class CompanyIPOService {
 	@Autowired
 	CompanyIPORepository repo;
-	public List<CompanyIPO> companyIPOGetter(){
+	public List<CompanyIPO> companyIPOGetter(Integer id){
 		List<CompanyIPO> list = new ArrayList<>();
-		repo.findAll().forEach(list::add);
+		repo.findIpoByCompanyId(id).forEach(list::add);
 		return list;
 	}
 	
@@ -34,4 +34,9 @@ public class CompanyIPOService {
 		return list;
 		
 	}
+	
+	public CompanyIPO ipoGetter(Integer id) {
+		return repo.findById(id).get();
+	}
+	
 }

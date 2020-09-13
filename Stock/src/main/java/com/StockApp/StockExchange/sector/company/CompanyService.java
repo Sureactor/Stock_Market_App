@@ -8,15 +8,22 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.StockApp.exception.StockException;
+
 @Service
 public class CompanyService {
 	
 	@Autowired
 	CompanyRepository repo;
-	public void companyAdder(Company company) {
+	public void companyAdder(Company company) throws StockException {
+		if(repo.existsById(company.getId())) {
+			throw new StockException("ID already exist");
+		}
 		repo.save(company);
 		System.out.println(repo);
 	}
+	
+	
 	
 	public Company CompanyByIdGetter(Integer companyId){
 		Company comp = repo.findById(companyId).get();

@@ -16,6 +16,11 @@ public class Sector {
 	@Id
 	Integer sectorId;
 	Integer companyId;
+
+	
+	public Sector() {
+		
+	}
 	public Sector(Integer sectorId, Integer companyId) {
 		super();
 		this.sectorId = sectorId;

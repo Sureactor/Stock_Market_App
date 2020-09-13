@@ -6,10 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 
-@EntityScan(
-        basePackageClasses = {StockApplication.class, Jsr310JpaConverters.class}
-)
-@SpringBootApplication	
+@SpringBootApplication
 public class StockApplication {
 
 	public static void main(String[] args) {

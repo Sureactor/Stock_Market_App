@@ -1,15 +1,20 @@
 package com.StockApp.StockExchange.sector.company;
 
+
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.StockApp.StockExchange.StockExchange;
 import com.StockApp.StockExchange.sector.Sector;
@@ -21,13 +26,21 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 public class Company {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	Integer companyId;
+	@NotBlank(message="CEO field is blank")
 	String ceo;
+	@NotBlank(message="Bried field is blank")
 	String brief;
+	@NotBlank(message="Code field is blank")
 	String code;
+	@NotBlank(message="Name field is blank")
 	String name;
+	@NotNull(message="Contact ID field is null")
 	Integer contactId;
+	@NotNull(message="Sector ID field is null")
 	Integer sectorId;
+	@NotNull(message="Stock Exchange ID field is null")
 	Integer stockExchangeId;
 	
 	public Company() {}

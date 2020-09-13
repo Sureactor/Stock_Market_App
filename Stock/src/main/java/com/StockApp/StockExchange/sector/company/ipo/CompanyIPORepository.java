@@ -12,4 +12,7 @@ public interface CompanyIPORepository extends CrudRepository<CompanyIPO,Integer>
 
 	@Query(value="FROM CompanyIPO s WHERE s.closeTime >= ?1 ")
 	public List<CompanyIPO> findByDate(Date current);
+	
+	@Query(value="FROM CompanyIPO s where s.company.companyId=?1")
+	public List<CompanyIPO> findIpoByCompanyId(Integer id);
 }
