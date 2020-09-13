@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.StockApp.StockExchange.sector.company.Company;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -22,11 +24,15 @@ public class CompanyIPO {
 	Date openTime;
 //    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy", timezone = "UTC")
 	Date closeTime;
+	@NotBlank(message="Remarks is blank")
 	String remarks;
-	double sharePrice;
-	int totalShares;
+	@NotNull(message="Share Price is null")
+	Double sharePrice;
+	@NotNull(message="Total Share is null")
+	Integer totalShares;
 	@ManyToOne
 	@JoinColumn(name="companyId")
+	@NotNull(message="Company ID is null")
 	Company company;
 	
 	public CompanyIPO() {
@@ -64,13 +70,13 @@ public class CompanyIPO {
 	public double getSharePrice() {
 		return sharePrice;
 	}
-	public void setSharePrice(double sharePrice) {
+	public void setSharePrice(Double sharePrice) {
 		this.sharePrice = sharePrice;
 	}
 	public int getTotalShares() {
 		return totalShares;
 	}
-	public void setTotalShares(int totalShares) {
+	public void setTotalShares(Integer totalShares) {
 		this.totalShares = totalShares;
 	}
 	public Company getCompany() {
