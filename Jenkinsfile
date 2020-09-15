@@ -29,5 +29,14 @@ pipeline {
                 }
             }
         }
+        stage('BuildFrontend') {
+            steps {
+                git branch: 'Surendar', url: 'https://github.com/Sureactor/Stock_Market_App_FrontEnd'
+                dir('StockMarketFrontend') {
+                    bat "npm install"
+                    bat "npm run-script build"
+                }
+            }
+        }
     }
 }
