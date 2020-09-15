@@ -12,6 +12,12 @@ pipeline {
                 dir('Stock') {
                     bat 'mvn -B -DskipTests clean package'
                 }
+                dir('Eureka') {
+                    bat 'mvn -B -DskipTests clean package'
+                }
+                dir('User') {
+                    bat 'mvn -B -DskipTests clean package'
+                }
             }
         }
     }
