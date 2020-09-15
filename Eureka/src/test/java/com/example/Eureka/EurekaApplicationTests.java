@@ -1,12 +1,12 @@
-package com.StockMarket;
+package com.example.Eureka;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class StockApplicationTests {
+class EurekaApplicationTests {
 
-	//@Test
+	@Test
 	void contextLoads() {
 	}
 
